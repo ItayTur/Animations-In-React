@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Transition from "react-transition-group/Transition";
 
 import "./App.css";
 import Modal from "./components/Modal/Modal";
@@ -18,15 +17,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>React Animations</h1>
-        <Transition
-          in={isModalOpen}
-          timeout={300}
-          mountOnEnter
-          unmountOnExit>
-          {state => (
-            <Modal isModalOpen={state} closed={() => this.setIsModalOpen(false)} />
-          )}
-        </Transition>
+        <Modal isModalOpen={isModalOpen} closed={() => this.setIsModalOpen(false)} />
         {isModalOpen && <Backdrop isModalOpen />}
         <button className="Button" onClick={() => this.setIsModalOpen(true)}>Open Modal</button>
         <h3>Animating Lists</h3>
